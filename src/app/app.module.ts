@@ -1,12 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-<<<<<<< HEAD
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
 
-=======
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
->>>>>>> 6f912d7a907b51dcd3e2de60407b48ad3a5955ae
 import { AppComponent } from './app.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { LoginComponent } from './users/login/login.component';
@@ -45,16 +41,7 @@ const appRoutes: Routes = [
     LandingComponent
   ],
   imports: [
-<<<<<<< HEAD
-    BrowserModule, 
-    FormsModule,
-    ReactiveFormsModule, 
-    NgBootstrapFormValidationModule.forRoot() ,
-    HttpModule, 
-    RouterModule.forRoot( appRoutes )
-=======
     BrowserModule, ReactiveFormsModule, FormsModule, HttpModule, RouterModule.forRoot( appRoutes )
->>>>>>> 6f912d7a907b51dcd3e2de60407b48ad3a5955ae
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
