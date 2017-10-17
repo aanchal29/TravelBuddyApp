@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink, Router} from '@angular/router';
 
 
 @Component({
@@ -10,16 +10,16 @@ import { RouterLink } from '@angular/router';
 
 
 
-export class AppComponent {
+export class AppComponent implements OnInit{
   
   isLoggedin : boolean = false;
   title = 'TravelBuddy';  
   
 
-  constructor(){
+  constructor(private router: Router){
     sessionStorage.clear();
     let checker = setInterval(()=>{
-      console.log("loginstate: " + this.isLoggedin, "sessionStore: " + sessionStorage.getItem('token'));
+      //console.log("loginstate: " + this.isLoggedin, "sessionStore: " + sessionStorage.getItem('token'));
       if(sessionStorage.getItem('token')){
         this.isLoggedin = true;
       }
@@ -27,6 +27,11 @@ export class AppComponent {
         this.isLoggedin = false;
       }
     }, 200);
+    this.router.navigate(['landing']);
+  }
+
+  ngOnInit(){
+    
   }
 
   

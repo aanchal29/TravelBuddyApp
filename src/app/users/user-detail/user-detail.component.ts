@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router, ActivatedRoute} from '@angular/router';
+import { NgForm, Validators } from '@angular/forms';
 import { User } from '../user';
 import { UserService } from '../../_services/user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -11,6 +12,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   providers: [UserService, NgForm]
 })
 
+<<<<<<< HEAD
 export class UserDetailComponent implements OnInit {
   state: boolean = false;
   message: String;
@@ -30,17 +32,34 @@ export class UserDetailComponent implements OnInit {
       username: "",
       created: {
         date: new Date(),
+=======
+
+export class UserDetailComponent implements OnInit{
+  regState: boolean = undefined;
+  message: String = undefined;
+  sub: any;
+  confirmpassword: string;
+  user: User;
+
+  constructor (private UserService: UserService, private route: ActivatedRoute, private router: Router) {}
+
+
+  initUser(){
+    this.user = {
+      name: "",
+      username: "",
+      created: {
+        date: new Date()
+>>>>>>> 6f912d7a907b51dcd3e2de60407b48ad3a5955ae
       },
-      roles: [
-        "user"
-      ],
-      password: "",
       email: "",
       phone: "",
-      name: "",
-      profileData: new Object()
+      password: "",
+      roles: ['user'],
+      profileData: {}
     };
   }
+<<<<<<< HEAD
 
   ngOnInit() {
     this.initUser();
@@ -94,5 +113,52 @@ export class UserDetailComponent implements OnInit {
       this.state = false;
       this.message = "Failed to register, please check details.";
     });
+=======
+  ngOnInit(){
+    this.initUser();  
+    
+    this.sub = this.route.params.subscribe(params => {
+      //console.log(params);
+      if(params['regstate'] == "false"){
+        this.regState = false;
+        this.message = "Failed to register, please check details.";
+      }
+      else if(params['regstate'] == "true"){
+        this.regState = true;
+        this.message = "Registered Successfully.";
+        this.initUser();
+      }
+      else if(params['regstate'] == "undefined"){
+        this.message = "Please enter your details."
+      }
+      setTimeout(()=>{
+        this.message = undefined;
+      }, 10000);
+    });
+  }
+  
+  createUser() {
+    for(let key in this.user){
+      if(this.user[key] == ""){
+        console.log("KEY: " + key);
+        this.message = "Invalid input";
+        this.regState = false;
+        setTimeout(()=>{
+          this.message = undefined;
+          this.regState = undefined;
+        }, 5000)
+        return;
+      }
+    }
+    this.UserService.createUser(this.user).then(success=>{
+      if(success){
+        this.router.navigate(['/signup/true']);
+      }
+    }, reject=>{
+      if(reject){
+        this.router.navigate(['/signup/false']);
+      }
+    });    
+>>>>>>> 6f912d7a907b51dcd3e2de60407b48ad3a5955ae
   }
 }
