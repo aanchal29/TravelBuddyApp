@@ -8,17 +8,6 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-<<<<<<< HEAD
-                    <form [formGroup]="formGroup" class="form-horizontal" action="" method="post" #registrationForm="ngForm">
-                        <div class="form-group">
-                            <div class="col-md-12  inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="glyphicon glyphicon-user"></i>
-                                    </span>
-                                    <input name="user-name" formControlName="Name" placeholder="Full Name" [(ngModel)]="user.name" class="form-control" type="text" >
-                                    
-=======
                     <form role="form" class="form-horizontal" action=" " method="post" #regForm="ngForm" novalidate>
                         <fieldset>
                             <div class="alert" [class.alert-danger]='regState == false' [class.alert-success]='regState == true' *ngIf="message">{{message}}</div>
@@ -32,20 +21,9 @@
                                         
                                     </div>
                                     <div class="alert alert-warning" [hidden]="user.name && user.name.length > 3">Please enter a valid full name.</div>
->>>>>>> 6f912d7a907b51dcd3e2de60407b48ad3a5955ae
                                 </div>
                                 
                             </div>
-<<<<<<< HEAD
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12 inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="glyphicon glyphicon-user"></i>
-                                    </span>
-                                    <input name="user-uname" formControlName="UserName" placeholder="User Name" [(ngModel)]="user.username" class="form-control" type="text">
-=======
                             <div class="form-group">
                                 <div class="col-md-12  inputGroupContainer">
                                     <div class="input-group">
@@ -55,20 +33,9 @@
                                         <input name="email" required placeholder="mail@example.com" #email="ngModel" [(ngModel)]="user.email" [(value)]="user.email" class="form-control" type="email">
                                     </div>
                                     <div class="alert alert-warning" [hidden]="user.email && user.email.length > 3 && user.email.indexOf('@') > 2 && user.email.indexOf('.', user.email.indexOf('@')) >= 3">Please enter a valid email.</div>
->>>>>>> 6f912d7a907b51dcd3e2de60407b48ad3a5955ae
                                 </div>
                                 
                             </div>
-<<<<<<< HEAD
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12  inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="glyphicon glyphicon-earphone"></i>
-                                    </span>
-                                    <input name="user-phone-mobile" formControlName="Mobile" placeholder="+91 9781232100" [(ngModel)]="user.phone" class="form-control" type="text">
-=======
                             <div class="form-group">
                                 <div class="col-md-12  inputGroupContainer">
                                     <div class="input-group">
@@ -78,31 +45,9 @@
                                         <input name="phone-mobile" placeholder="9781232100" required #phone="ngModel" maxlength="10" [(ngModel)]="user.phone" [(value)]="user.phone" class="form-control"
                                             type="phone">
                                     </div>
->>>>>>> 6f912d7a907b51dcd3e2de60407b48ad3a5955ae
                                 </div>
                                 
                             </div>
-<<<<<<< HEAD
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12  inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="glyphicon glyphicon-envelope"></i>
-                                    </span>
-                                    <input name="user-email" formControlName="Email" placeholder="mail@example.com" [(ngModel)]="user.email" class="form-control" type="text" >
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12  inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="glyphicon glyphicon-lock"></i>
-                                    </span>
-                                    <input class="form-control" formControlName="Password" type="password" name="user-pass" placeholder="Password" [(ngModel)]="user.password"/>
-
-=======
                         <!-- </fieldset>
                         <fieldset> -->
                             <div class="form-group">
@@ -129,20 +74,9 @@
                                     </div>
                                     <div class="alert alert-warning" [hidden]="user.password && user.password.length >= 6">Please enter a valid password.</div>
                                     <div class="alert alert-danger" *ngIf="user.password.length < 6">Password must be at least 6 characters long.</div>
->>>>>>> 6f912d7a907b51dcd3e2de60407b48ad3a5955ae
                                 </div>
                                 
                             </div>
-<<<<<<< HEAD
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12  inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="glyphicon glyphicon-lock"></i>
-                                    </span>
-                                    <input class="form-control" formControlName="ConfirmPassword" type="password" name="confirm-password" placeholder="Confirm Password" />
-=======
                             <div class="form-group has-feedback">
                                 <div class="col-md-12  inputGroupContainer">
                                     <div class="input-group">
@@ -153,28 +87,14 @@
                                         
                                     </div>
                                     <div class="alert alert-danger" [hidden]="confirmpassword == user.password">Passwords do not match</div>
->>>>>>> 6f912d7a907b51dcd3e2de60407b48ad3a5955ae
                                 </div>
                                 
                             </div>
-<<<<<<< HEAD
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <button type="submit" (click)="createUser(user);" class="btn btn-info btn-block">Register
-                                </button>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                                <div class="col-md-12">
-                                    <p>{{message}}</p>
-=======
                             
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <button type="button" (click)="createUser()" class="btn btn-info btn-block">Register
                                     </button>
->>>>>>> 6f912d7a907b51dcd3e2de60407b48ad3a5955ae
                                 </div>
                             </div>
                     </form>
