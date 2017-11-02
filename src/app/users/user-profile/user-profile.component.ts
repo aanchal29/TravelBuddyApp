@@ -1,18 +1,63 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { LocationService } from '../../_services/locationmap.service';
+import { Component, Input, OnInit, ViewChild  } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../../_services/user.service';
-import { DateTimePickerModule } from 'ng-pick-datetime'
+import { Router, ActivatedRoute} from '@angular/router';
+import { NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css'],
-  providers: [ UserService, LocationService ]
+  providers: [ UserService, NgForm]
 })
 
 export class UserProfileComponent implements OnInit{
-  states: any = [];
+
+  regState: boolean = undefined;
+  message: String = undefined;
+  sub: any;
+  user: User;
+
+  constructor (private UserService: UserService, private route: ActivatedRoute, private router: Router) {}
+
+
+  initUser(){
+    this.user = {
+      name: "",
+      username: "",
+      created: {
+        date: new Date()
+      },
+      email: "",
+      phone: "",
+      password: "",
+      roles: ['user'],
+      profileData: {}
+    };
+  }
+  ngOnInit(){
+    this.initUser();  
+    
+    this.sub = this.route.params.subscribe(params => {
+      //console.log(params);
+      if(params['regstate'] == "false"){
+        this.regState = false;
+        this.message = "Failed to register, please check details.";
+      }
+      else if(params['regstate'] == "true"){
+        this.regState = true;
+        this.message = "Registered Successfully.";
+        this.initUser();
+      }
+      else if(params['regstate'] == "undefined"){
+        this.message = "Please enter your details."
+      }
+      setTimeout(()=>{
+        this.message = undefined;
+      }, 10000);
+    });
+  }
+  /* states: any = [];
   cities: any = [];
   loading: boolean = false;
   profileData: {
@@ -31,9 +76,9 @@ export class UserProfileComponent implements OnInit{
     bio: string;
     profilePic: string;
   };
-  users: User[];
-  constructor (private UserService: UserService, private datepicker: DateTimePickerModule, private LocationService: LocationService) {
-  	this.profileData = {
+  users: User[]; */
+  
+  	/* this.profileData = {
   		originAddress: {
         city: "",
         state: "",
@@ -53,11 +98,11 @@ export class UserProfileComponent implements OnInit{
     for(let state in temp){
       this.states.push(temp[state]);
     }
-  }
+  } */
 
-  ngOnInit(){  }
+  
 
-  onSelect(){
+  /* onSelect(){
     if(this.profileData.originAddress.state){
       this.loading = true;
       this.profileData.originAddress.state = this.LocationService.getState(this.profileData.originAddress.state);
@@ -79,6 +124,6 @@ export class UserProfileComponent implements OnInit{
 
   onSubmit(){
   	console.log(this.profileData);
-  }
+  } */
 
 }
