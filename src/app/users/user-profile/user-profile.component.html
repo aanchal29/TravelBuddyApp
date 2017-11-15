@@ -1,0 +1,111 @@
+<div class="container margin">
+    <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Edit Info
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" action=" " method="post">
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-md-12  inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-envelope"></i>
+                                        </span>
+                                        <input name="email" required placeholder="mail@example.com" #email="ngModel" [(ngModel)]="user.email" [(value)]="user.email"
+                                            class="form-control" type="email">
+
+                                    </div>
+                                    <div class="alert alert-warning" [hidden]="user.email && user.email.length > 3 && user.email.indexOf('@') > 2 && user.email.indexOf('.', user.email.indexOf('@')) >= 3">Please enter a valid email.</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12  inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-phone"></i>
+                                        </span>
+                                        <input name="phone-mobile" placeholder="9781232100" required #phone="ngModel" maxlength="10" [(ngModel)]="user.phone" [(value)]="user.phone" class="form-control"
+                                        type="phone">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12  inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-link"></i>
+                                        </span>
+                                        <input name="user-url" placeholder="www.user.com" required #url="ngModel" [(ngModel)]="user.url" [(value)]="user.url" class="form-control"
+                                            type="text">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12  inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-time"></i>
+                                        </span>
+                                        <input name="user-age" placeholder="Age" required #age="ngModel" ng-maxlength="2" ng-minlength="2" [(ngModel)]="user.age" [(value)]="user.age" class="form-control"
+                                            type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12  inputGroupContainer">
+                                    <div class="input-group">
+
+                                        <label class="radio-inline">
+                                            <input type="radio" name="answer" value="Female" ng-model="answers.gender" />Female</label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="answer" value="Male" ng-model="answers.gender" />Male</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel sub-heading form-group">
+                                <h3 class="panel-title-inner">Additional Information:
+                                </h3>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12  inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-info-sign"></i>
+                                        </span>
+                                        <textarea name="user-bio" placeholder="Short Bio" required="" class="form-control" type="text"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-md-12  inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-camera"></i>
+                                        </span>
+                                        <input type="file" name="user-pic" accept="image/*" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <button type="submit" (click)="onSubmit()" class="btn btn-info btn-block">Done
+                                    </button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
